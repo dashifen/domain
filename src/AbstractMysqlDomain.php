@@ -6,6 +6,7 @@ use Dashifen\Database\Mysql\MysqlInterface;
 use Dashifen\Domain\Entity\EntityInterface;
 use Dashifen\Domain\Entity\Factory\EntityFactoryInterface;
 use Dashifen\Domain\Payload\Factory\PayloadFactoryInterface;
+use Dashifen\Session\SessionInterface;
 
 /**
  * Class AbstractMysqlDomain
@@ -32,12 +33,27 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	 */
 	protected $payloadFactory;
 	
+	/**
+	 * @var SessionInterface $session
+	 */
+	protected $session;
+	
+	/**
+	 * AbstractMysqlDomain constructor.
+	 *
+	 * @param MysqlInterface          $db
+	 * @param SessionInterface        $session
+	 * @param EntityFactoryInterface  $entityFactory
+	 * @param PayloadFactoryInterface $payloadFactory
+	 */
 	public function __construct(
 		MysqlInterface $db,
+		SessionInterface $session,
 		EntityFactoryInterface $entityFactory,
 		PayloadFactoryInterface $payloadFactory
 	) {
 		$this->db = $db;
+		$this->session = $session;
 		$this->entityFactory = $entityFactory;
 		$this->payloadFactory = $payloadFactory;
 	}

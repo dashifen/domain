@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "509d7b5f70fd097ddb6f8995c7da9891",
+    "content-hash": "57689a63227d55a12872febd880663f9",
     "packages": [
         {
             "name": "aura/sql",
@@ -106,6 +106,47 @@
                 "pdo"
             ],
             "time": "2017-04-18T14:26:29+00:00"
+        },
+        {
+            "name": "dashifen/session",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dashifen/session.git",
+                "reference": "4c3fc02aa2744b5d25870780a11898ac746f0175"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dashifen/session/zipball/4c3fc02aa2744b5d25870780a11898ac746f0175",
+                "reference": "4c3fc02aa2744b5d25870780a11898ac746f0175",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dashifen\\Session\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Dashifen Kees",
+                    "email": "dashifen@dashifen.com",
+                    "homepage": "https://dashifen.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "a PHP session handling object",
+            "keywords": [
+                "session"
+            ],
+            "time": "2017-04-14T20:06:26+00:00"
         },
         {
             "name": "psr/log",
