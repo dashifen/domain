@@ -24,7 +24,7 @@ interface PayloadInterface {
 	 *
 	 * @return mixed|null
 	 */
-	public function getData(string $index, $default = null);
+	public function getDatum(string $index, $default = null);
 	
 	/**
 	 * @param string $key
@@ -33,6 +33,11 @@ interface PayloadInterface {
 	 * @return void
 	 */
 	public function setDatum(string $key, $value): void;
+	
+	/**
+	 * @returns array
+	 */
+	public function getData(): array;
 	
 	/**
 	 * @param array $data

@@ -61,7 +61,7 @@ abstract class AbstractPayload implements PayloadInterface {
 	 *
 	 * @return mixed|null
 	 */
-	public function getData(string $index, $default = null) {
+	public function getDatum(string $index, $default = null) {
 		return $this->data[$index] ?? $default;
 	}
 	
@@ -77,15 +77,25 @@ abstract class AbstractPayload implements PayloadInterface {
 	}
 	
 	/**
+	 * returns the $data property
+	 *
+	 * @returns array
+	 */
+	public function getData(): array {
+		return $this->data;
+	}
+	
+	/**
 	 * @param array $data
 	 * @return void
 	 */
 	public function setData(array $data): void {
 		
-		// at first blush, it might seem like we could simply do $this->data = $data
-		// and call it a day.  but, because we may have set other indices not found
-		// within $data, we want make sure that we don't remove those by replacing
-		// our data property with our data argument.
+		// at first blush, it might seem like we could simply do
+		// $this->data = $data and call it a day.  but, because we may
+		// have set other indices not found within $data, we want make
+		// sure that we don't remove those by replacing our data
+		// property with our data argument.
 		
 		foreach ($data as $index => $value) {
 			$this->setDatum($index, $value);
