@@ -10,7 +10,7 @@ use Dashifen\Domain\Entity\EntityInterface;
  *
  * @package Dashifen\Domain\Entity\Factory
  */
-abstract class AbstractEntityFactory implements EntityFactoryInterface {
+class EntityFactory implements EntityFactoryInterface {
 	/**
 	 * @var string $entityType
 	 */
