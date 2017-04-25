@@ -9,7 +9,7 @@ use Dashifen\Database\DatabaseExceptionInterface;
  *
  * @package Dashifen\Domain
  */
-class DomainException extends \Exception implements DatabaseExceptionInterface {
+class MysqlDomainException extends \Exception implements DatabaseExceptionInterface {
 	/**
 	 * @var string $query
 	 */

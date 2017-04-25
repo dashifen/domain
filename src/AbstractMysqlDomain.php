@@ -3,7 +3,7 @@
 namespace Dashifen\Domain;
 
 use Dashifen\Database\Mysql\MysqlInterface;
-use Dashifen\Domain\Entity\EntityInterface;
+use Dashifen\Domain\Payload\PayloadInterface;
 use Dashifen\Domain\Entity\Factory\EntityFactoryInterface;
 use Dashifen\Domain\Payload\Factory\PayloadFactoryInterface;
 use Dashifen\Session\SessionInterface;
@@ -63,38 +63,38 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	 *
 	 * @param array $data
 	 *
-	 * @throws DomainException
-	 * @return array
+	 * @throws MysqlDomainException
+	 * @return PayloadInterface
 	 */
-	abstract public function create(array $data): array;
+	abstract public function create(array $data): PayloadInterface;
 	
 	/**
 	 * reads information from the database returning a list of entities
 	 *
 	 * @param array $data
 	 *
-	 * @throws DomainException
-	 * @return EntityInterface[]
+	 * @throws MysqlDomainException
+	 * @return PayloadInterface
 	 */
-	abstract public function read(array $data = []): array;
+	abstract public function read(array $data = []): PayloadInterface;
 	
 	/**
 	 * updates the specified entities in the database returning the number of affected rows
 	 *
 	 * @param array $data
 	 *
-	 * @throws DomainException
-	 * @return int
+	 * @throws MysqlDomainException
+	 * @return PayloadInterface
 	 */
-	abstract public function update(array $data): int;
+	abstract public function update(array $data): PayloadInterface;
 	
 	/**
 	 * deletes the specified entities returning the number of affected rows.
 	 *
 	 * @param array $data
 	 *
-	 * @throws DomainException
-	 * @return int
+	 * @throws MysqlDomainException
+	 * @return PayloadInterface
 	 */
-	abstract public function delete(array $data): int;
+	abstract public function delete(array $data): PayloadInterface;
 }

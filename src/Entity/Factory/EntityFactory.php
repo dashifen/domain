@@ -2,7 +2,6 @@
 
 namespace Dashifen\Domain\Entity\Factory;
 
-use Dashifen\Domain\Entity\EntityException;
 use Dashifen\Domain\Entity\EntityInterface;
 
 /**
@@ -20,26 +19,29 @@ class EntityFactory implements EntityFactoryInterface {
 	 * AbstractEntityFactory constructor.
 	 *
 	 * @param string $entityType
-	 *
-	 * @throws EntityException
 	 */
 	final public function __construct(string $entityType = "") {
-		
-		// we allow $entityType to be blank and, when it is, we assume that the
-		// name of this class is {entityType}Factory.  so, if it's blank, we'll
-		// get that name and manipulate it to produce what we expect.  if we don't
-		// get something useful, the exception below will get thrown.
-		
-		if (empty($entityType)) {
-			$entityType = str_replace("Factory", "", get_class());
+		if (!empty($entityType)) {
+			$this->setEntityType($entityType);
 		}
-		
-		// $entityType must be the name of an implementation of the EntityInterface.
-		// otherwise, this factory won't be able to produce them.  so, we'll check that
-		// here.
-		
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getEntityType(): string {
+		return $this->entityType;
+	}
+	
+	/**
+	 * @param string $entityType
+	 *
+	 * @return void
+	 * @throws EntityFactoryException
+	 */
+	public function setEntityType(string $entityType): void {
 		if (!class_exists($entityType) || !is_subclass_of($entityType, "EntityInterface")) {
-			throw new EntityException("Unknown entity type: $entityType.");
+			throw new EntityFactoryException("Unknown entity: $entityType.", EntityFactoryException::UNKNOWN_ENTITY);
 		}
 		
 		$this->entityType = $entityType;
@@ -50,8 +52,13 @@ class EntityFactory implements EntityFactoryInterface {
 	 * @param array $data
 	 *
 	 * @return EntityInterface
+	 * @throws EntityFactoryException
 	 */
 	public function newEntity(array $data): EntityInterface {
+		if (empty($this->entityType)) {
+			throw new EntityFactoryException("Cannot produce entity without type.", EntityFactoryException::UNSET_ENTITY_TYPE);
+		}
+		
 		return new $this->entityType($data);
 	}
 	
@@ -59,8 +66,13 @@ class EntityFactory implements EntityFactoryInterface {
 	 * @param array $data
 	 *
 	 * @return EntityInterface[]
+	 * @throws EntityFactoryException
 	 */
 	public function newEntityCollection(array $data): array {
+		if (empty($this->entityType)) {
+			throw new EntityFactoryException("Cannot produce entity without type.", EntityFactoryException::UNSET_ENTITY_TYPE);
+		}
+		
 		$entities = [];
 		foreach ($data as $datum) {
 			$entities[] = $this->newEntity($datum);
