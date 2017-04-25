@@ -3,7 +3,7 @@
 namespace Dashifen\Domain;
 
 use Dashifen\Database\Mysql\MysqlInterface;
-use Dashifen\Domain\DataExpectation\DataExpectationInterface;
+use Dashifen\Domain\Validator\ValidatorInterface;
 use Dashifen\Domain\Entity\Factory\EntityFactoryInterface;
 use Dashifen\Domain\Payload\Factory\PayloadFactoryInterface;
 use Dashifen\Domain\Payload\PayloadInterface;
@@ -35,9 +35,9 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	protected $payloadFactory;
 	
 	/**
-	 * @var DataExpectationInterface $dataExpectations
+	 * @var ValidatorInterface $validator
 	 */
-	protected $dataExpectations;
+	protected $validator;
 	
 	/**
 	 * @var SessionInterface $session
@@ -47,23 +47,23 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	/**
 	 * AbstractMysqlDomain constructor.
 	 *
-	 * @param MysqlInterface           $db
-	 * @param SessionInterface         $session
-	 * @param EntityFactoryInterface   $entityFactory
-	 * @param PayloadFactoryInterface  $payloadFactory
-	 * @param DataExpectationInterface $dataExpectations
+	 * @param MysqlInterface          $db
+	 * @param SessionInterface        $session
+	 * @param ValidatorInterface      $validator
+	 * @param EntityFactoryInterface  $entityFactory
+	 * @param PayloadFactoryInterface $payloadFactory
 	 */
 	public function __construct(
 		MysqlInterface $db,
 		SessionInterface $session,
+		ValidatorInterface $validator,
 		EntityFactoryInterface $entityFactory,
-		PayloadFactoryInterface $payloadFactory,
-		DataExpectationInterface $dataExpectations
+		PayloadFactoryInterface $payloadFactory
 	) {
 		$this->db = $db;
 		$this->entityFactory = $entityFactory;
 		$this->payloadFactory = $payloadFactory;
-		$this->dataExpectations = $dataExpectations;
+		$this->validator = $validator;
 
 		// the above properties are pretty self-explanatory in that it's
 		// pretty clear why we need them.  but, why does the domain need to
