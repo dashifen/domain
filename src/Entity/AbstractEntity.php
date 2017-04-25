@@ -43,7 +43,7 @@ abstract class AbstractEntity implements EntityInterface {
 				get_class()
 			);
 			
-			throw new EntityException($message);
+			throw new EntityException($message, EntityException::UNKNOWN_PROPERTY);
 		}
 	}
 	
@@ -57,7 +57,8 @@ abstract class AbstractEntity implements EntityInterface {
 	public function set(string $key, $value): void {
 		if (!property_exists($this, $key)) {
 			throw new EntityException(
-				sprintf("Unknown property (%s) in %s.", $key, get_class())
+				sprintf("Unknown property (%s) in %s.", $key, get_class()),
+				EntityException::UNKNOWN_PROPERTY
 			);
 		}
 		
@@ -114,8 +115,9 @@ abstract class AbstractEntity implements EntityInterface {
 	public function getAll(bool $withEmpties = true): array {
 		$properties = get_object_vars($this);
 		
-		// our $errors property shouldn't be accessed from our get* methods.
-		// therefore, we unset it here before we do anything else.
+		// our $errors property shouldn't be accessed except with the
+		// specialized getErrors() method below.  so, we'll unset that
+		// one here.
 		
 		unset($properties["errors"]);
 		
@@ -130,7 +132,12 @@ abstract class AbstractEntity implements EntityInterface {
 		return $properties;
 	}
 	
-	
+	/**
+	 * @return array
+	 */
+	public function getErrors(): array {
+		return $this->errors;
+	}
 	
 	/**
 	 * @param array $exceptions
@@ -189,9 +196,10 @@ abstract class AbstractEntity implements EntityInterface {
 	}
 	
 	/**
-	 * checks this entity for errors and returns them.
+	 * checks this entity for errors and returns a true if it found some,
+	 * false otherwise.
 	 *
-	 * @return array
+	 * @return bool
 	 */
-	abstract public function validate(): array;
+	abstract public function validate(): bool;
 }

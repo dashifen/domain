@@ -3,9 +3,10 @@
 namespace Dashifen\Domain;
 
 use Dashifen\Database\Mysql\MysqlInterface;
-use Dashifen\Domain\Payload\PayloadInterface;
+use Dashifen\Domain\DataExpectation\DataExpectationInterface;
 use Dashifen\Domain\Entity\Factory\EntityFactoryInterface;
 use Dashifen\Domain\Payload\Factory\PayloadFactoryInterface;
+use Dashifen\Domain\Payload\PayloadInterface;
 use Dashifen\Session\SessionInterface;
 
 /**
@@ -19,7 +20,7 @@ use Dashifen\Session\SessionInterface;
  */
 abstract class AbstractMysqlDomain implements DomainInterface {
 	/**
-	 * @var MysqlInterface $db;
+	 * @var MysqlInterface $db ;
 	 */
 	protected $db;
 	
@@ -34,6 +35,11 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	protected $payloadFactory;
 	
 	/**
+	 * @var DataExpectationInterface $dataExpectations
+	 */
+	protected $dataExpectations;
+	
+	/**
 	 * @var SessionInterface $session
 	 */
 	protected $session;
@@ -41,21 +47,30 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	/**
 	 * AbstractMysqlDomain constructor.
 	 *
-	 * @param MysqlInterface          $db
-	 * @param SessionInterface        $session
-	 * @param EntityFactoryInterface  $entityFactory
-	 * @param PayloadFactoryInterface $payloadFactory
+	 * @param MysqlInterface           $db
+	 * @param SessionInterface         $session
+	 * @param EntityFactoryInterface   $entityFactory
+	 * @param PayloadFactoryInterface  $payloadFactory
+	 * @param DataExpectationInterface $dataExpectations
 	 */
 	public function __construct(
 		MysqlInterface $db,
 		SessionInterface $session,
 		EntityFactoryInterface $entityFactory,
-		PayloadFactoryInterface $payloadFactory
+		PayloadFactoryInterface $payloadFactory,
+		DataExpectationInterface $dataExpectations
 	) {
 		$this->db = $db;
-		$this->session = $session;
 		$this->entityFactory = $entityFactory;
 		$this->payloadFactory = $payloadFactory;
+		$this->dataExpectations = $dataExpectations;
+
+		// the above properties are pretty self-explanatory in that it's
+		// pretty clear why we need them.  but, why does the domain need to
+		// know about the session?  usually, it's to access the information
+		// about the visitor to track changes in the database.
+
+		$this->session = $session;
 	}
 	
 	/**
@@ -79,7 +94,8 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	abstract public function read(array $data = []): PayloadInterface;
 	
 	/**
-	 * updates the specified entities in the database returning the number of affected rows
+	 * updates the specified entities in the database returning the number of
+	 * affected rows
 	 *
 	 * @param array $data
 	 *

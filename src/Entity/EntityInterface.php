@@ -38,6 +38,11 @@ interface EntityInterface {
 	public function getAllExcept(array $exceptions, bool $withEmpties = true): array;
 	
 	/**
+	 * @return array
+	 */
+	public function getErrors(): array;
+	
+	/**
 	 * @param string $key
 	 * @param        $value
 	 *
@@ -65,7 +70,8 @@ interface EntityInterface {
 	public function isSavable(): bool;
 	
 	/**
-	 * @return array
+	 * @return bool
 	 */
-	public function validate(): array;
+	public function validate(): bool;
+	
 }
