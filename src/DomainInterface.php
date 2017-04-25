@@ -5,6 +5,22 @@ namespace Dashifen\Domain;
 use Dashifen\Domain\Payload\PayloadInterface;
 
 interface DomainInterface {
+	/**
+	 * gets the entity type that this domain works with
+	 *
+	 * @return string
+	 */
+	public function getEntityType(): string;
+	
+	/**
+	 * sets the entity type that the domain works with, likely passing
+	 * it onto an instance of an EntityFactory.
+	 *
+	 * @param string $entityType
+	 *
+	 * @return void
+	 */
+	public function setEntityType(string $entityType): void;
 	
 	/**
 	 * creates the specified entities in the database and returns their IDs

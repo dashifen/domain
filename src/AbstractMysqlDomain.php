@@ -74,6 +74,22 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	}
 	
 	/**
+	 * @return string
+	 */
+	public function getEntityType(): string {
+		return $this->entityFactory->getEntityType();
+	}
+	
+	/**
+	 * @param string $entityType
+	 *
+	 * @return void
+	 */
+	public function setEntityType(string $entityType): void {
+		$this->entityFactory->setEntityType($entityType);
+	}
+	
+	/**
 	 * creates the specified entities in the database and returns their IDs
 	 *
 	 * @param array $data
