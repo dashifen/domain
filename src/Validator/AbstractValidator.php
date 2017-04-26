@@ -21,6 +21,26 @@ abstract class AbstractValidator implements ValidatorInterface {
 	}
 	
 	/**
+	 * confirms that $expected values have been $provided.
+	 *
+	 * @param array $expected
+	 * @param array $provided
+	 *
+	 * @return bool
+	 */
+	protected function confirmExpectations(array $expected, array $provided): bool {
+		
+		// the array_intersect() function returns the items in the first
+		// parameter that are also found in the second one.  so if the
+		// intersection of $expected and $provided is equal to $expected,
+		// we've confirmed our expectations.  the intersection shouldn't
+		// alter the item order, but just in case that changes, we'll not
+		// use the identity operator here and just check for equality.
+		
+		return array_intersect($expected, $provided) == $expected;
+	}
+	
+	/**
 	 * @param array $data
 	 *
 	 * @return bool
