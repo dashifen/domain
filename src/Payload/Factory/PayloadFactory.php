@@ -4,6 +4,7 @@ namespace Dashifen\Domain\Payload\Factory;
 
 use Dashifen\Domain\Payload\CreatePayload;
 use Dashifen\Domain\Payload\DeletePayload;
+use Dashifen\Domain\Payload\EmptyPayload;
 use Dashifen\Domain\Payload\OtherPayload;
 use Dashifen\Domain\Payload\PayloadInterface;
 use Dashifen\Domain\Payload\ReadPayload;
@@ -103,5 +104,12 @@ class PayloadFactory implements PayloadFactoryInterface {
 	 */
 	public function newUnsuccessfulOtherPayload(array $data = []): PayloadInterface {
 		return new OtherPayload(false, $data);
+	}
+	
+	/**
+	 * @return PayloadInterface
+	 */
+	public function newEmptyPayload(): PayloadInterface {
+		return new EmptyPayload();
 	}
 }

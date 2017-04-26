@@ -79,4 +79,9 @@ interface PayloadFactoryInterface {
 	 * @return PayloadInterface
 	 */
 	public function newUnsuccessfulOtherPayload(array $data = []): PayloadInterface;
+	
+	/**
+	 * @return PayloadInterface
+	 */
+	public function newEmptyPayload(): PayloadInterface;
 }
