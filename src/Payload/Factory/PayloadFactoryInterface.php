@@ -11,74 +11,44 @@ use Dashifen\Domain\Payload\PayloadInterface;
  */
 interface PayloadFactoryInterface {
 	/**
-	 * @param array $data;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulCreatePayload(array $data = []): PayloadInterface;
+	public function newCreatePayload(bool $success, array $data = []): PayloadInterface;
 	
 	/**
-	 * @param array $data;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulReadPayload(array $data = []): PayloadInterface;
+	public function newReadPayload(bool $success, array $data = []): PayloadInterface;
 	
 	/**
-	 * @param array $data;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulUpdatePayload(array $data = []): PayloadInterface;
+	public function newUpdatePayload(bool $success, array $data = []): PayloadInterface;
 	
 	/**
-	 * @param array $data;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulDeletePayload(array $data = []): PayloadInterface;
+	public function newDeletePayload(bool $success, array $data = []): PayloadInterface;
 	
 	/**
-	 * @param array $data;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulOtherPayload(array $data = []): PayloadInterface;
-	
-	/**
-	 * @param array $data;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulCreatePayload(array $data = []): PayloadInterface;
-	
-	/**
-	 * @param array $data;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulReadPayload(array $data = []): PayloadInterface;
-	
-	/**
-	 * @param array $data;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulUpdatePayload(array $data = []): PayloadInterface;
-	
-	/**
-	 * @param array $data;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulDeletePayload(array $data = []): PayloadInterface;
-	
-	/**
-	 * @param array $data;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulOtherPayload(array $data = []): PayloadInterface;
+	public function newOtherPayload(bool $success, array $data = []): PayloadInterface;
 	
 	/**
 	 * @return PayloadInterface

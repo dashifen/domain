@@ -17,93 +17,53 @@ use Dashifen\Domain\Payload\UpdatePayload;
  */
 class PayloadFactory implements PayloadFactoryInterface {
 	/**
-	 * @param array $data ;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulCreatePayload(array $data = []): PayloadInterface {
+	public function newCreatePayload(bool $success, array $data = []): PayloadInterface {
 		return new CreatePayload(true, $data);
 	}
 	
 	/**
-	 * @param array $data ;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulReadPayload(array $data = []): PayloadInterface {
+	public function newReadPayload(bool $success, array $data = []): PayloadInterface {
 		return new ReadPayload(true, $data);
 	}
 	
 	/**
-	 * @param array $data ;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulUpdatePayload(array $data = []): PayloadInterface {
+	public function newUpdatePayload(bool $success, array $data = []): PayloadInterface {
 		return new UpdatePayload(true, $data);
 	}
 	
 	/**
-	 * @param array $data ;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulDeletePayload(array $data = []): PayloadInterface {
+	public function newDeletePayload(bool $success, array $data = []): PayloadInterface {
 		return new DeletePayload(true, $data);
 	}
 	
 	/**
-	 * @param array $data ;
+	 * @param bool  $success
+	 * @param array $data
 	 *
 	 * @return PayloadInterface
 	 */
-	public function newSuccessfulOtherPayload(array $data = []): PayloadInterface {
+	public function newOtherPayload(bool $success, array $data = []): PayloadInterface {
 		return new OtherPayload(true, $data);
-	}
-	
-	/**
-	 * @param array $data ;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulCreatePayload(array $data = []): PayloadInterface {
-		return new CreatePayload(false, $data);
-	}
-	
-	/**
-	 * @param array $data ;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulReadPayload(array $data = []): PayloadInterface {
-		return new ReadPayload(false, $data);
-	}
-	
-	/**
-	 * @param array $data ;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulUpdatePayload(array $data = []): PayloadInterface {
-		return new UpdatePayload(false, $data);
-	}
-	
-	/**
-	 * @param array $data ;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulDeletePayload(array $data = []): PayloadInterface {
-		return new DeletePayload(false, $data);
-	}
-	
-	/**
-	 * @param array $data ;
-	 *
-	 * @return PayloadInterface
-	 */
-	public function newUnsuccessfulOtherPayload(array $data = []): PayloadInterface {
-		return new OtherPayload(false, $data);
 	}
 	
 	/**
