@@ -40,13 +40,16 @@ class EntityFactory implements EntityFactoryInterface {
 	 * @throws EntityFactoryException
 	 */
 	public function setEntityType(string $entityType): void {
-		if (!class_exists($entityType) || !is_subclass_of($entityType, "EntityInterface")) {
+		if (!class_exists($entityType)) {
 			throw new EntityFactoryException("Unknown entity: $entityType.", EntityFactoryException::UNKNOWN_ENTITY);
+		}
+		
+		if (!is_subclass_of($entityType, "EntityInterface")) {
+			throw new EntityFactoryException("Not an entity: $entityType.", EntityFactoryException::NOT_AN_ENTITY);
 		}
 		
 		$this->entityType = $entityType;
 	}
-	
 	
 	/**
 	 * @param array $data
