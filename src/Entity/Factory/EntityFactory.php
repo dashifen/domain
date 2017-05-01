@@ -44,7 +44,7 @@ class EntityFactory implements EntityFactoryInterface {
 			throw new EntityFactoryException("Unknown entity: $entityType.", EntityFactoryException::UNKNOWN_ENTITY);
 		}
 		
-		if (!is_subclass_of($entityType, "EntityInterface")) {
+		if (!is_a($entityType, "EntityInterface", true)) {
 			throw new EntityFactoryException("Not an entity: $entityType.", EntityFactoryException::NOT_AN_ENTITY);
 		}
 		
