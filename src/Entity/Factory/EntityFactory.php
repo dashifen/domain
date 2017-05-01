@@ -44,11 +44,26 @@ class EntityFactory implements EntityFactoryInterface {
 			throw new EntityFactoryException("Unknown entity: $entityType.", EntityFactoryException::UNKNOWN_ENTITY);
 		}
 		
-		if (!is_a($entityType, "EntityInterface", true)) {
-			throw new EntityFactoryException("Not an entity: $entityType.", EntityFactoryException::NOT_AN_ENTITY);
-		}
+		// now that we know a class with the name of entityType exists, we need
+		// to see if it is an implementation of our EntityInterface object.  the
+		// use of the Aura DI container to inject dependencies seems to prevent
+		// the use of the PHP is_a() and is_subclass_of() functions.  instead,
+		// we'll try to instantiate it like it's an EntityInterface and then we
+		// can use the instanceof operator to be sure.
 		
 		$this->entityType = $entityType;
+		$temp = $this->newEntity([]);
+		
+		if (!($temp instanceof EntityInterface)) {
+			
+			// if that didn't work, then not only do we want to throw an
+			// exception, but we also want to be sure that we set the
+			// entityType property back to null so that it doesn't accidentally
+			// get used elsewhere after the exception is caught.
+			
+			$this->entityType = null;
+			throw new EntityFactoryException("Not an entity: $entityType.", EntityFactoryException::NOT_AN_ENTITY);
+		}
 	}
 	
 	/**
