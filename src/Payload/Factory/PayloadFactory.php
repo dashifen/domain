@@ -23,7 +23,7 @@ class PayloadFactory implements PayloadFactoryInterface {
 	 * @return PayloadInterface
 	 */
 	public function newCreatePayload(bool $success, array $data = []): PayloadInterface {
-		return new CreatePayload(true, $data);
+		return new CreatePayload($success, $data);
 	}
 	
 	/**
@@ -33,7 +33,7 @@ class PayloadFactory implements PayloadFactoryInterface {
 	 * @return PayloadInterface
 	 */
 	public function newReadPayload(bool $success, array $data = []): PayloadInterface {
-		return new ReadPayload(true, $data);
+		return new ReadPayload($success, $data);
 	}
 	
 	/**
@@ -43,7 +43,7 @@ class PayloadFactory implements PayloadFactoryInterface {
 	 * @return PayloadInterface
 	 */
 	public function newUpdatePayload(bool $success, array $data = []): PayloadInterface {
-		return new UpdatePayload(true, $data);
+		return new UpdatePayload($success, $data);
 	}
 	
 	/**
@@ -53,7 +53,7 @@ class PayloadFactory implements PayloadFactoryInterface {
 	 * @return PayloadInterface
 	 */
 	public function newDeletePayload(bool $success, array $data = []): PayloadInterface {
-		return new DeletePayload(true, $data);
+		return new DeletePayload($success, $data);
 	}
 	
 	/**
@@ -63,7 +63,7 @@ class PayloadFactory implements PayloadFactoryInterface {
 	 * @return PayloadInterface
 	 */
 	public function newOtherPayload(bool $success, array $data = []): PayloadInterface {
-		return new OtherPayload(true, $data);
+		return new OtherPayload($success, $data);
 	}
 	
 	/**
