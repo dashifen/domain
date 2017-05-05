@@ -3,6 +3,7 @@
 namespace Dashifen\Domain;
 
 use Dashifen\Database\Mysql\MysqlInterface;
+use Dashifen\Domain\Transformer\TransformerInterface;
 use Dashifen\Domain\Validator\ValidatorInterface;
 use Dashifen\Domain\Entity\Factory\EntityFactoryInterface;
 use Dashifen\Domain\Payload\Factory\PayloadFactoryInterface;
@@ -40,6 +41,11 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	protected $validator;
 	
 	/**
+	 * @var TransformerInterface $transformer
+	 */
+	protected $transformer;
+	
+	/**
 	 * @var SessionInterface $session
 	 */
 	protected $session;
@@ -50,6 +56,7 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 	 * @param MysqlInterface          $db
 	 * @param SessionInterface        $session
 	 * @param ValidatorInterface      $validator
+	 * @param TransformerInterface    $transformer
 	 * @param EntityFactoryInterface  $entityFactory
 	 * @param PayloadFactoryInterface $payloadFactory
 	 */
@@ -57,13 +64,15 @@ abstract class AbstractMysqlDomain implements DomainInterface {
 		MysqlInterface $db,
 		SessionInterface $session,
 		ValidatorInterface $validator,
+		TransformerInterface $transformer,
 		EntityFactoryInterface $entityFactory,
 		PayloadFactoryInterface $payloadFactory
 	) {
 		$this->db = $db;
+		$this->validator = $validator;
+		$this->transformer = $transformer;
 		$this->entityFactory = $entityFactory;
 		$this->payloadFactory = $payloadFactory;
-		$this->validator = $validator;
 
 		// the above properties are pretty self-explanatory in that it's
 		// pretty clear why we need them.  but, why does the domain need to
