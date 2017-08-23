@@ -52,8 +52,18 @@ abstract class AbstractPayload implements PayloadInterface {
 	public function getSuccess(): bool {
 		return $this->success;
 	}
-	
-	/**
+
+    /**
+     * @param bool $success
+     *
+     * @return void
+     */
+    public function setSuccess(bool $success): void {
+        $this->success = $success;
+    }
+
+
+    /**
 	 * given an $index, return its data or $default if it doesn't exist
 	 *
 	 * @param string     $index

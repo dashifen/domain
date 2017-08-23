@@ -17,7 +17,14 @@ interface PayloadInterface {
 	 * @return bool
 	 */
 	public function getSuccess(): bool;
-	
+
+    /**
+     * @param bool $success
+     *
+     * @return void
+     */
+	public function setSuccess(bool $success): void;
+
 	/**
 	 * @param string $index
 	 * @param mixed  $default
