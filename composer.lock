@@ -1,23 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57689a63227d55a12872febd880663f9",
+    "content-hash": "6e2bbf884ae071d2ffc227856a7524d9",
     "packages": [
         {
             "name": "aura/sql",
-            "version": "3.x-dev",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/auraphp/Aura.Sql.git",
-                "reference": "610ea8a7e66bb0c0fd9a2bf83e1d0f7c4f35692d"
+                "reference": "2be02d5dfd9fdee6df199de1a19572aa490bb744"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/auraphp/Aura.Sql/zipball/610ea8a7e66bb0c0fd9a2bf83e1d0f7c4f35692d",
-                "reference": "610ea8a7e66bb0c0fd9a2bf83e1d0f7c4f35692d",
+                "url": "https://api.github.com/repos/auraphp/Aura.Sql/zipball/2be02d5dfd9fdee6df199de1a19572aa490bb744",
+                "reference": "2be02d5dfd9fdee6df199de1a19572aa490bb744",
                 "shasum": ""
             },
             "require": {
@@ -57,24 +57,25 @@
                 "sqlserver",
                 "sqlsrv"
             ],
-            "time": "2017-03-14 14:43:39"
+            "time": "2018-06-11T12:57:42+00:00"
         },
         {
             "name": "dashifen/database",
-            "version": "1.0.6",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dashifen/database.git",
-                "reference": "6256dede61680a023669b32b2ab6f7c0b07c6700"
+                "reference": "8be18a1e458b5d621870b232431fb6d92c703a36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dashifen/database/zipball/6256dede61680a023669b32b2ab6f7c0b07c6700",
-                "reference": "6256dede61680a023669b32b2ab6f7c0b07c6700",
+                "url": "https://api.github.com/repos/dashifen/database/zipball/8be18a1e458b5d621870b232431fb6d92c703a36",
+                "reference": "8be18a1e458b5d621870b232431fb6d92c703a36",
                 "shasum": ""
             },
             "require": {
-                "aura/sql": "^3.0.0-alpha1",
+                "aura/sql": "3.0.*",
+                "dashifen/exception": "1.1.*",
                 "php": "^7.1"
             },
             "require-dev": {
@@ -105,24 +106,63 @@
                 "database",
                 "pdo"
             ],
-            "time": "2017-04-18T14:26:29+00:00"
+            "time": "2019-06-15T02:41:30+00:00"
         },
         {
-            "name": "dashifen/session",
-            "version": "1.0.2",
+            "name": "dashifen/exception",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dashifen/session.git",
-                "reference": "4c3fc02aa2744b5d25870780a11898ac746f0175"
+                "url": "https://github.com/dashifen/exception.git",
+                "reference": "c900fdd58f4b50562810b9930d1f5c52b64da28b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dashifen/session/zipball/4c3fc02aa2744b5d25870780a11898ac746f0175",
-                "reference": "4c3fc02aa2744b5d25870780a11898ac746f0175",
+                "url": "https://api.github.com/repos/dashifen/exception/zipball/c900fdd58f4b50562810b9930d1f5c52b64da28b",
+                "reference": "c900fdd58f4b50562810b9930d1f5c52b64da28b",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": ">=7.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dashifen\\Exception\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Dashifen Kees",
+                    "email": "dashifen@dashifen.com",
+                    "homepage": "https://dashifen.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "a base class for exceptions in Dashifen's other work",
+            "time": "2019-11-30T20:08:44+00:00"
+        },
+        {
+            "name": "dashifen/session",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dashifen/session.git",
+                "reference": "9a7c217bfb2a743c7f2639ff056936b087901629"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dashifen/session/zipball/9a7c217bfb2a743c7f2639ff056936b087901629",
+                "reference": "9a7c217bfb2a743c7f2639ff056936b087901629",
+                "shasum": ""
+            },
+            "require": {
+                "dashifen/exception": "1.1.*",
+                "php": ">=7.3"
             },
             "type": "library",
             "autoload": {
@@ -146,7 +186,7 @@
             "keywords": [
                 "session"
             ],
-            "time": "2017-04-14T20:06:26+00:00"
+            "time": "2019-11-30T20:07:43+00:00"
         },
         {
             "name": "psr/log",
@@ -154,12 +194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+                "reference": "5628725d0e4d687e29575eb41f9d5ee7de33a84c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/5628725d0e4d687e29575eb41f9d5ee7de33a84c",
+                "reference": "5628725d0e4d687e29575eb41f9d5ee7de33a84c",
                 "shasum": ""
             },
             "require": {
@@ -168,7 +208,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -193,7 +233,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2019-11-12T16:45:05+00:00"
         }
     ],
     "packages-dev": [],
@@ -203,7 +243,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1"
+        "php": ">=7.3"
     },
     "platform-dev": []
 }

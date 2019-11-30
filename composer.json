@@ -12,7 +12,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.3.*",
+		"php": ">=7.3",
 		"dashifen/database": "1.4.*",
 		"dashifen/session": "1.2.*"
 	},
