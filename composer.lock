@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e2bbf884ae071d2ffc227856a7524d9",
+    "content-hash": "2b2d2a09074b1a1ffd33643668a221ed",
     "packages": [
         {
             "name": "aura/sql",
@@ -148,20 +148,20 @@
         },
         {
             "name": "dashifen/session",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dashifen/session.git",
-                "reference": "9a7c217bfb2a743c7f2639ff056936b087901629"
+                "reference": "c7dea4f9b927f8e5bde0b5fc9731ccd156956174"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dashifen/session/zipball/9a7c217bfb2a743c7f2639ff056936b087901629",
-                "reference": "9a7c217bfb2a743c7f2639ff056936b087901629",
+                "url": "https://api.github.com/repos/dashifen/session/zipball/c7dea4f9b927f8e5bde0b5fc9731ccd156956174",
+                "reference": "c7dea4f9b927f8e5bde0b5fc9731ccd156956174",
                 "shasum": ""
             },
             "require": {
-                "dashifen/exception": "1.1.*",
+                "dashifen/exception": "^1",
                 "php": ">=7.3"
             },
             "type": "library",
@@ -186,7 +186,7 @@
             "keywords": [
                 "session"
             ],
-            "time": "2019-11-30T20:07:43+00:00"
+            "time": "2019-11-30T20:22:13+00:00"
         },
         {
             "name": "psr/log",
